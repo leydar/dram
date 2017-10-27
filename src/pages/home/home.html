@@ -1,17 +1,43 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Dram Whiskey</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-fab top right edge>
+    <button ion-fab color="light"><ion-icon name="add-circle"></ion-icon></button>
+  </ion-fab>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light"><ion-icon name="share"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-instagram"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-pinterest"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-snapchat"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+  <ion-card>
+    <img src="assets/imgs/lagavulin.jpg" class="bg-dram-img" />
+    <div class="card-title">
+      Lagavulin
+    </div>
+    <div class="card-subtitle">brine, sweet, soft</div>
+
+    <ion-icon name="camera"></ion-icon>
+    <ion-icon name="trash"></ion-icon>
+    <ion-icon name="barcode"></ion-icon>
+    <ion-icon name="cart"></ion-icon>
+    <ion-icon name="chatbubbles"></ion-icon>
+    <ion-icon name="heart-outline"></ion-icon>
+    <ion-icon name="water"></ion-icon>
+    <ion-icon name="arrow-round-up"></ion-icon>
+    213
+    <ion-icon name="arrow-round-down"></ion-icon>
+  </ion-card>
+
 </ion-content>
