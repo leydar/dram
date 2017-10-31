@@ -6,7 +6,7 @@
 
 <ion-content padding>
   <ion-fab top right edge>
-    <button ion-fab color="light"><ion-icon name="add-circle"></ion-icon></button>
+    <button ion-fab color="light" (tap)="addNewDram(1)"><ion-icon name="add-circle"></ion-icon></button>
   </ion-fab>
 
   <ion-fab right bottom>
@@ -21,14 +21,19 @@
   </ion-fab>
 
 
-  <ion-card>
-    <img src="assets/imgs/lagavulin.jpg" class="bg-dram-img" />
-    <div class="card-title">
-      Lagavulin
+  <ion-card *ngFor="let dram of drams">
+    <img src={{dram.img}} class="bg-dram-img" />
+    <div class="card-title" (tap)="presentActionSheet()">
+      {{ dram.name }}
     </div>
-    <div class="card-subtitle">brine, sweet, soft</div>
+    <div class="card-subtitle">
+      <span name="nose" class="card-note"><span class="card-note-title">nose:</span> {{ dram.nose }}</span>
+      <span name="palate" class="card-note"><span class="card-note-title">palate:</span> {{ dram.palate }}</span>
+      <span name="mouthfeel" class="card-note"><span class="card-note-title">mouthfeel:</span> {{ dram.mouthfeel }}</span>
+      <span name="finish" class="card-note"><span class="card-note-title">finish:</span> {{ dram.finish }}</span>
+   </div>
 
-    <ion-icon name="camera"></ion-icon>
+    <ion-icon name="camera" (tap)="addNewDram(1000)"></ion-icon>
     <ion-icon name="trash"></ion-icon>
     <ion-icon name="barcode"></ion-icon>
     <ion-icon name="cart"></ion-icon>
