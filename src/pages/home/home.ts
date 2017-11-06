@@ -1,15 +1,45 @@
 import { Component } from '@angular/core';
 import { ActionSheetController } from 'ionic-angular';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
+interface Dram {
+  brand: string;
+  img: string;
+  volume: number;
+  cask: number; //first fill, sherry, oak  
+  bonded: string;
+  masters: any;
+  mouthfeel: any;
+  notes: string;
+  distiller:string;
+  blender?: string;
+  company?: string; //bottler, bonder, distillery
+  style?: string;
+  region?: string;
+  abv?: number;
+  age?: number;
+  created?: string;
+  edition?: string;
+  finish?: any;
+  nose?: any;
+  palate?: any;
+}
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
-  drams = [];
 
-  constructor(public actionSheetCtrl: ActionSheetController) {
-    this.drams = [{distillery: 'Midleton',
+export class HomePage {
+  dramsCol: AngularFirestoreCollection<Dram>;
+  drams: Observable<Dram[]>;
+
+  constructor(private afs: AngularFirestore, 
+              public actionSheetCtrl: ActionSheetController) {
+/*    this.drams = [{distillery: 'Midleton',
                   name: 'Powers Aviation',
                   img: 'assets/imgs/lagavulin.jpg',
                   abv: 46,
@@ -25,8 +55,24 @@ export class HomePage {
                   finish: ['lingering', 'warm'],
                   notes: 'A remarkable dram. I wish I hadn\'t already finished the bottle'}
                  ];
+*/
+  }
 
-    console.log(this.drams[0]);
+  ngOnInit() {
+    //executes when the component loads
+    this.dramsCol = this.afs.collection('drams');
+    this.drams = this.dramsCol.valueChanges();
+    
+    console.log(this.drams, this.dramsCol);
+    this.initDrams();
+  }
+
+  initDrams = function() {
+    this.drams.forEach(element => {
+      for(let i=0; i<element.length; i++) {
+        console.log(element[i]);
+      }
+    });
   }
 
   addNewDram = function(drammage: number) {

@@ -20,8 +20,12 @@
     </ion-fab-list>
   </ion-fab>
 
-
-  <ion-card *ngFor="let dram of drams">
+  <ul>
+    <li *ngFor="let item of drams | async">{{item | json}}</li>
+  </ul>
+  <!--div *ngFor="let dram of drams">
+    ||{{ dram | json }}|| >
+   <ion-card>
     <img src={{dram.img}} class="bg-dram-img" />
     <div class="card-title" (tap)="presentActionSheet()">
       {{ dram.name }}
@@ -44,5 +48,5 @@
     213
     <ion-icon name="arrow-round-down"></ion-icon>
   </ion-card>
-
+  </div-->
 </ion-content>
