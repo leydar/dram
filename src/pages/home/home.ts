@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 interface Dram {
+  id?: string;
   brand: string;
   img?: string;
   volume?: number;
@@ -36,27 +37,32 @@ interface Dram {
 export class HomePage {
     dramsCol: AngularFirestoreCollection<Dram>;
     drams: Observable<Dram[]>;
-    snapshot: any;
+    snapshot: any = [];
 
   constructor(private afs: AngularFirestore, 
                 public actionSheetCtrl: ActionSheetController) {
       
-  }
+  };
 
   ngOnInit() {
     //executes when the component loads
     this.dramsCol = this.afs.collection('drams', ref => {
       return ref.orderBy('brand');
     });
+
     //this.drams = this.dramsCol.valueChanges();
-    this.snapshot = this.dramsCol.snapshotChanges()
-                        .map(arr => {
-                          return arr.map(snap => {
+    this.dramsCol.snapshotChanges()
+                        .subscribe(actions => {
+                          console.log(actions);
+
+                          return actions.map(snap => {
                             let id = snap.payload.doc.id;
                             let data = { id, ...snap.payload.doc.data() };
+
+                            this.snapshot.push(data);
                             return data;
                           });
-                        }).subscribe();
+                        });
     
     console.log(this.snapshot);
     //this.initDrams();

@@ -21,11 +21,13 @@
   </ion-fab>
 
   <!--ul>
-    <li *ngFor="let item of drams | async">{{item | json}}</li>
+    <li *ngFor="let item of snapshot">{{item | json}}</li>
   </ul-->
   <dram></dram>
-  <div *ngFor="let dram of drams | async; let i=index; trackBy: trackByDrams">
-    <ion-card>
+
+  <!--div *ngFor="let dram of drams | async; let i=index; trackBy: trackByDrams"-->
+  <div *ngFor="let dram of snapshot; let i=index; trackBy: trackByDrams">
+      <ion-card>
      <img src={{dram.img}} class="bg-dram-img" />
      <div class="card-title" (tap)="presentActionSheet()">
        {{ i }}: {{ dram.brand }}
