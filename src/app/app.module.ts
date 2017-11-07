@@ -1,3 +1,4 @@
+import { DramComponent } from './../components/dram/dram';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -13,7 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 
 var firebaseConfig = {
   apiKey: "AIzaSyCnAcJcXyyzReuBsKLzeKNTHsITKnYO3uk",
@@ -30,7 +31,8 @@ var firebaseConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    DramComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,9 @@ var firebaseConfig = {
     AngularFirestoreModule,
     FormsModule
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [
+    IonicApp
+  ],
   entryComponents: [
     MyApp,
     AboutPage,

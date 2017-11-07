@@ -7,14 +7,14 @@ import 'rxjs/add/operator/map';
 
 interface Dram {
   brand: string;
-  img: string;
-  volume: number;
-  cask: number; //first fill, sherry, oak  
-  bonded: string;
-  masters: any;
-  mouthfeel: any;
-  notes: string;
-  distiller:string;
+  img?: string;
+  volume?: number;
+  cask?: number; //first fill, sherry, oak  
+  bonded?: string;
+  masters?: any;
+  mouthfeel?: any;
+  notes?: string;
+  distiller?:string;
   blender?: string;
   company?: string; //bottler, bonder, distillery
   style?: string;
@@ -34,40 +34,37 @@ interface Dram {
 })
 
 export class HomePage {
-  dramsCol: AngularFirestoreCollection<Dram>;
-  drams: Observable<Dram[]>;
+    dramsCol: AngularFirestoreCollection<Dram>;
+    drams: Observable<Dram[]>;
+    snapshot: any;
 
   constructor(private afs: AngularFirestore, 
-              public actionSheetCtrl: ActionSheetController) {
-/*    this.drams = [{distillery: 'Midleton',
-                  name: 'Powers Aviation',
-                  img: 'assets/imgs/lagavulin.jpg',
-                  abv: 46,
-                  volume: 700,
-                  cask: 83785,
-                  bonded: '2000-11-20',
-                  masters: [{distiller: 'Brian Nation'},
-                            {blender: 'Billy Leighton'},
-                            {cooper: 'Ger Buckley'}],
-                  nose: ['grassy', 'oily'],
-                  palate: ['caramel', 'leather', 'spice'],
-                  mouthfeel: ['oily', 'rich'],
-                  finish: ['lingering', 'warm'],
-                  notes: 'A remarkable dram. I wish I hadn\'t already finished the bottle'}
-                 ];
-*/
+                public actionSheetCtrl: ActionSheetController) {
+      
   }
 
   ngOnInit() {
     //executes when the component loads
-    this.dramsCol = this.afs.collection('drams');
-    this.drams = this.dramsCol.valueChanges();
+    this.dramsCol = this.afs.collection('drams', ref => {
+      return ref.orderBy('brand');
+    });
+    //this.drams = this.dramsCol.valueChanges();
+    this.snapshot = this.dramsCol.snapshotChanges()
+                        .map(arr => {
+                          return arr.map(snap => {
+                            let id = snap.payload.doc.id;
+                            let data = { id, ...snap.payload.doc.data() };
+                            return data;
+                          });
+                        }).subscribe();
     
-    console.log(this.drams, this.dramsCol);
-    this.initDrams();
+    console.log(this.snapshot);
+    //this.initDrams();
   }
 
-  initDrams = function() {
+  trackByDrams(index: number, dram: Dram): string { return dram.brand; }
+  
+  initDrams(): void {
     this.drams.forEach(element => {
       for(let i=0; i<element.length; i++) {
         console.log(element[i]);
@@ -75,8 +72,8 @@ export class HomePage {
     });
   }
 
-  addNewDram = function(drammage: number) {
-    for (let i=0; i<drammage; i++) {
+  addNewDram(drammage: number): void {
+    /*for (let i=0; i<drammage; i++) {
     this.drams.unshift({distillery: 'Midleton',
                      name: 'Redbreast '+this.drams.length,
                      img: 'assets/imgs/redbreast.png',
@@ -92,10 +89,10 @@ export class HomePage {
                      mouthfeel: ['oily', 'rich'],
                      finish: ['lingering', 'warm'],
                      notes: 'A remarkable dram. I wish I hadn\'t already finished the bottle'});
-    }
+    }*/
   }
 
-  presentActionSheet = function() {
+  presentActionSheet(): void {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Drams by the fist',
       buttons: [

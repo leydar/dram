@@ -20,33 +20,35 @@
     </ion-fab-list>
   </ion-fab>
 
-  <ul>
+  <!--ul>
     <li *ngFor="let item of drams | async">{{item | json}}</li>
-  </ul>
-  <!--div *ngFor="let dram of drams">
-    ||{{ dram | json }}|| >
-   <ion-card>
-    <img src={{dram.img}} class="bg-dram-img" />
-    <div class="card-title" (tap)="presentActionSheet()">
-      {{ dram.name }}
+  </ul-->
+  <dram></dram>
+  <div *ngFor="let dram of drams | async; let i=index; trackBy: trackByDrams">
+    <ion-card>
+     <img src={{dram.img}} class="bg-dram-img" />
+     <div class="card-title" (tap)="presentActionSheet()">
+       {{ i }}: {{ dram.brand }}
+     </div>
+     <div class="card-subtitle">
+       <span name="abv" class="card-note"><span class="card-note-title">abv:</span> {{ dram.abv | percent }}</span>
+       <span name="nose" class="card-note"><span class="card-note-title">nose:</span> {{ dram.nose }}</span>
+       <span name="palate" class="card-note"><span class="card-note-title">palate:</span> {{ dram.palate }}</span>
+       <span name="mouthfeel" class="card-note"><span class="card-note-title">mouthfeel:</span> {{ dram.mouthfeel }}</span>
+       <span name="finish" class="card-note"><span class="card-note-title">finish:</span> {{ dram.finish }}</span>
     </div>
-    <div class="card-subtitle">
-      <span name="nose" class="card-note"><span class="card-note-title">nose:</span> {{ dram.nose }}</span>
-      <span name="palate" class="card-note"><span class="card-note-title">palate:</span> {{ dram.palate }}</span>
-      <span name="mouthfeel" class="card-note"><span class="card-note-title">mouthfeel:</span> {{ dram.mouthfeel }}</span>
-      <span name="finish" class="card-note"><span class="card-note-title">finish:</span> {{ dram.finish }}</span>
+  
+     <ion-icon name="camera" (tap)="addNewDram(1000)"></ion-icon>
+     <ion-icon name="trash"></ion-icon>
+     <ion-icon name="barcode"></ion-icon>
+     <ion-icon name="cart"></ion-icon>
+     <ion-icon name="chatbubbles"></ion-icon>
+     <ion-icon name="heart-outline"></ion-icon>
+     <ion-icon name="water"></ion-icon>
+     <ion-icon name="arrow-round-up"></ion-icon>
+     213
+     <ion-icon name="arrow-round-down"></ion-icon>
+   </ion-card>
    </div>
-
-    <ion-icon name="camera" (tap)="addNewDram(1000)"></ion-icon>
-    <ion-icon name="trash"></ion-icon>
-    <ion-icon name="barcode"></ion-icon>
-    <ion-icon name="cart"></ion-icon>
-    <ion-icon name="chatbubbles"></ion-icon>
-    <ion-icon name="heart-outline"></ion-icon>
-    <ion-icon name="water"></ion-icon>
-    <ion-icon name="arrow-round-up"></ion-icon>
-    213
-    <ion-icon name="arrow-round-down"></ion-icon>
-  </ion-card>
-  </div-->
+  
 </ion-content>
