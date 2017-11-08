@@ -1,21 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ActionSheetController } from 'ionic-angular';
 
-/**
- * Generated class for the DramComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'dram',
   templateUrl: 'dram.html'
 })
+
 export class DramComponent {
+  @Input ('dram') dram;
+  @Output () occurance = new EventEmitter();
+  
+  constructor(private actionSheetCtrl: ActionSheetController) { };
 
-  text: string;
+  presentActionSheet(): void {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Drams by the fist',
+      buttons: [
+        {
+          text: 'Pot Still',
+          role: 'destructive',
+          handler: () => {
+            console.log('Pot Still clicked');
+          }
+        },{
+          text: 'Single Malt',
+          handler: () => {
+            console.log('Single Malt clicked');
+          }
+        },{
+          text: 'Blend',
+          handler: () => {
+            console.log('Blend clicked');
+          }
+        },{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  };
 
-  constructor() {
-    this.text = 'whiskey component';
-  }
-
+  addImage(): void {
+    console.log('camera click');
+    this.occurance.emit("an occurance");
+  };
 }

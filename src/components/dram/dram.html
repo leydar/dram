@@ -1,1 +1,24 @@
-{{ text }}
+<ion-card>
+  <img src={{dram.img}} class="bg-dram-img" />
+  <div class="card-title" (tap)="presentActionSheet()">
+    {{ i }}: {{ dram.brand }}
+  </div>
+  <div class="card-subtitle">
+    <span name="abv" class="card-note"><span class="card-note-title">abv:</span> {{ dram.abv | percent }}</span>
+    <span name="nose" class="card-note"><span class="card-note-title">nose:</span> {{ dram.nose }}</span>
+    <span name="palate" class="card-note"><span class="card-note-title">palate:</span> {{ dram.palate }}</span>
+    <span name="mouthfeel" class="card-note"><span class="card-note-title">mouthfeel:</span> {{ dram.mouthfeel }}</span>
+    <span name="finish" class="card-note"><span class="card-note-title">finish:</span> {{ dram.finish }}</span>
+  </div>
+
+  <ion-icon name="camera" (tap)="addImage()"></ion-icon>
+  <ion-icon name="trash"></ion-icon>
+  <ion-icon name="barcode"></ion-icon>
+  <ion-icon name="cart"></ion-icon>
+  <ion-icon name="chatbubbles"></ion-icon>
+  <ion-icon name="heart-outline"></ion-icon>
+  <ion-icon name="water"></ion-icon>
+  <ion-icon name="arrow-round-up"></ion-icon>
+  213
+  <ion-icon name="arrow-round-down"></ion-icon>
+</ion-card>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActionSheetController } from 'ionic-angular';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs/Observable';
@@ -37,10 +36,11 @@ interface Dram {
 export class HomePage {
     dramsCol: AngularFirestoreCollection<Dram>;
     drams: Observable<Dram[]>;
-    snapshot: any = [];
+    snapshot: any;
+    data: any;
+    dataArray: Observable<any[]>;
 
-  constructor(private afs: AngularFirestore, 
-                public actionSheetCtrl: ActionSheetController) {
+  constructor(private afs: AngularFirestore) {
       
   };
 
@@ -50,21 +50,30 @@ export class HomePage {
       return ref.orderBy('brand');
     });
 
-    //this.drams = this.dramsCol.valueChanges();
-    this.dramsCol.snapshotChanges()
+    this.drams = this.dramsCol.valueChanges();
+    this.snapshot = this.dramsCol.snapshotChanges()
                         .subscribe(actions => {
                           console.log(actions);
 
                           return actions.map(snap => {
                             let id = snap.payload.doc.id;
                             let data = { id, ...snap.payload.doc.data() };
+                            //this.snapshot.push(data);
+                            this.data = data;
 
-                            this.snapshot.push(data);
                             return data;
                           });
                         });
-    
-    console.log(this.snapshot);
+
+    this.dataArray=this.dramsCol.snapshotChanges()
+    .map(actions => {
+      return actions.map(snap => {
+        let id = snap.payload.doc.id;
+        let data = { id, ...snap.payload.doc.data() };
+        return data;
+      })
+    });
+
     //this.initDrams();
   }
 
@@ -98,35 +107,7 @@ export class HomePage {
     }*/
   }
 
-  presentActionSheet(): void {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Drams by the fist',
-      buttons: [
-        {
-          text: 'Pot Still',
-          role: 'destructive',
-          handler: () => {
-            console.log('Pot Still clicked');
-          }
-        },{
-          text: 'Single Malt',
-          handler: () => {
-            console.log('Single Malt clicked');
-          }
-        },{
-          text: 'Blend',
-          handler: () => {
-            console.log('Blend clicked');
-          }
-        },{
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
+  componentEvent(item: any): void {
+    console.log('drammage\'s done', item);
   }
 }
