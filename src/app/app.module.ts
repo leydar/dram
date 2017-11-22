@@ -1,3 +1,4 @@
+import { WheelPage } from './../pages/wheel/wheel';
 import { DramComponent } from './../components/dram/dram';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,7 +33,8 @@ var firebaseConfig = {
     ContactPage,
     HomePage,
     TabsPage,
-    DramComponent
+    DramComponent,
+    WheelPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ var firebaseConfig = {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    WheelPage
   ],
   providers: [
     StatusBar,

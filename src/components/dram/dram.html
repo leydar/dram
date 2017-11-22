@@ -1,7 +1,7 @@
 <ion-card>
   <img src={{dram.img}} class="bg-dram-img" />
   <div class="card-title" (tap)="presentActionSheet()">
-    {{ i }}: {{ dram.brand }}
+    {{ dram.brand }}
   </div>
   <div class="card-subtitle">
     <span name="abv" class="card-note"><span class="card-note-title">abv:</span> {{ dram.abv | percent }}</span>
