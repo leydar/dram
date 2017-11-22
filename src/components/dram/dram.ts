@@ -12,6 +12,10 @@ export class DramComponent {
   
   constructor(private actionSheetCtrl: ActionSheetController) { };
 
+  vote(delta): void {
+    this.dram.vote+=delta;
+  };
+
   presentActionSheet(): void {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Drams by the fist',

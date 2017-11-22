@@ -1,79 +1,50 @@
-<!--
-  Generated template for the WheelPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
     <ion-title>wheel</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <svg width="12cm" height="15.25cm" viewBox="0 0 1200 400"
+    xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <rect x="1" y="1" width="1198" height="398"
+          fill="none" stroke="blue" stroke-width="1" />
+    <path d="M50,100 h-150 a150,150 0 1,0 150,-150 z"
+          fill="red" stroke="blue" stroke-width="5" />
+    <path d="M275,175 v-150 a150,150 0 0,0 -150,150 z"
+          fill="yellow" stroke="blue" stroke-width="5" />
+    <path d="M500,200 v-100 a100,100 0 0,0 -100,100 z"></path>
+    <path d="M600,100 v250 a250,250 0 0,0 216.5,-125 z" fill="white" stroke="brown" stroke-width="10"></path>
+    <path d="M400,100 h250 a250,250 0 0,1 -250,250 z" fill="white" stroke="green" stroke-width="5"></path>
+
+    <path id="segment_0" (click)="segmentClick(0);" d="M400,300 h250 a250,250 0 0,1 -58.5,160.7 z" opacity=0.65 fill="white" stroke="red" stroke-width="5"></path>
+    <path id="segment_1" (click)="segmentClick(1);" d="M400,300 v250 a250,250 0 0,0 160.7,-58.5 z" opacity=0.65 fill="white" stroke="blue" stroke-width="5"></path>
+    <path id="segment_2" (click)="segmentClick(2);" d="M400,300 v250 a250,250 0 0,1 -160.7,-58.5 z" opacity=0.65 fill="white" stroke="brown" stroke-width="5"></path>
+    <path id="segment_3" (click)="segmentClick(3);" d="M400,300 h-250 a250,250 0 0,0 58.5,160.7 z" opacity=0.65 fill="white" stroke="orange" stroke-width="5"></path>
+
+    <path id="segment_4" (click)="segmentClick(4);" d="M400,300 h250 a250,250 0 0,0 -58.5,-160.7 z" opacity=0.65 fill="white" stroke="black" stroke-width="5"></path>
+    <path id="segment_5" (click)="segmentClick(5);" d="M400,300 v-250 a250,250 0 0,1 160.7,58.5 z" opacity=0.65 fill="white" stroke="purple" stroke-width="5"></path>
+    <path id="segment_6" (click)="segmentClick(6);" d="M400,300 v-250 a250,250 0 0,0 -160.7,58.5 z" opacity=0.65 fill="white" stroke="yellow" stroke-width="5"></path>
+    <path id="segment_7" (click)="segmentClick(7);" d="M400,300 h-250 a250,250 0 0,1 58.5,-160.7 z" opacity=0.65 fill="white" stroke="silver" stroke-width="5"></path>
+    
+    <path d="M600,350 l 50,-25 
+              a25,25 -30 0,1 50,-25 l 50,-25 
+              a25,50 -30 0,1 50,-25 l 50,-25 
+              a25,75 -30 0,1 50,-25 l 50,-25 
+              a25,100 -30 0,1 50,-25 l 50,-25"
+          fill="none" stroke="red" stroke-width="5"  />
+  </svg>
   <!--object id="svg" data="assets/imgs/wheel.svg" type="image/svg+xml" width="100%">
     Your browser is incompantable
   </object-->
-  <svg
-  xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:cc="http://creativecommons.org/ns#"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns="http://www.w3.org/2000/svg"
-  version="1.1"
-  id="svg2"
-  viewBox="0 0 711.35145 700"
-  height="197.55556mm"
-  width="200.75919mm">
- <defs
-    id="defs4" />
- <g
-    transform="translate(-16.379486,-176.04572)"
-    id="layer1">
-   <path
-      d="M 727.73093,526.04572 A 355.67572,350 0 0 1 644.51862,751.02138 L 372.05521,526.04572 Z"
-      id="path5062"
-      style="opacity:0.80899999;fill-opacity:1" />
-   <path
-      transform="matrix(0.76604444,0.64278761,-0.64278761,0.76604444,0,0)"
-      d="M 978.8222,163.82191 A 355.67572,350 0 0 1 895.60989,388.79758 L 623.14648,163.82191 Z"
-      id="path5062-4"
-      style="opacity:0.80899999;fill:#ff00ff;fill-opacity:1" />
-   <path
-      transform="matrix(-0.17364817,0.98480775,-0.98480775,-0.17364817,0,0)"
-      d="m 809.12292,-457.74976 a 355.67572,350 0 0 1 -83.21231,224.97567 L 453.4472,-457.74976 Z"
-      id="path5062-3"
-      style="opacity:0.80899999;fill:#ff0000;fill-opacity:1" />
-   <path
-      transform="matrix(-0.76604444,-0.64278761,-0.64278761,0.76604444,0,0)"
-      d="m -265.6828,165.3222 a 355.67572,350 0 0 1 -83.21231,224.97567 L -621.35852,165.3222 Z"
-      id="path5062-5"
-      style="opacity:0.80899999;fill:#ff0000;fill-opacity:1" />
-   <path
-      transform="matrix(0.76604444,-0.64278761,0.64278761,0.76604444,0,0)"
-      d="M 304.33883,643.62714 A 355.67572,350 0 0 1 221.12651,868.6028 L -51.336895,643.62714 Z"
-      id="path5062-1"
-      style="opacity:0.80899999;fill:#ff0000;fill-opacity:1" />
-   <path
-      transform="scale(-1,1)"
-      d="M -16.379486,526.04572 A 355.67572,350 0 0 1 -99.591797,751.02138 L -372.05521,526.04572 Z"
-      id="path5062-7"
-      style="opacity:0.80899999;fill:#ff0000;fill-opacity:1" />
-   <path
-      transform="matrix(0.76604444,-0.64278761,-0.64278761,-0.76604444,0,0)"
-      d="M 304.33881,-643.62714 A 355.67572,350 0 0 1 221.1265,-418.65147 L -51.33691,-643.62714 Z"
-      id="taste_0"
-      style="opacity:0.80899999;fill-opacity:1" />
-   <path
-      transform="matrix(-0.17364817,-0.98480775,-0.98480775,0.17364817,0,0)"
-      d="M -226.57959,-272.75742 A 355.67572,350 0 0 1 -309.7919,-47.781753 L -582.25531,-272.75742 Z"
-      id="path5062-3-3"
-      style="opacity:0.80899999;fill:#ff0000;fill-opacity:1" />
- </g>
-</svg>
-
-
+  <!--svg viewBox="0 0 712 700">
+  <g id="layer1">
+    <path (click)="segmentClick(0);"
+        d="M 727.73093,526.04572 A 355.67572,350 0 0 1 644.51862,751.02138 L 372.05521,526.04572 Z"
+        id="taste_0"/>
+    <path (click)="segmentClick(1);"
+        d="M 727.73093,526.04572 A 355.67572,350 0 0 1 644.51862,751.02138 L 372.05521,526.04572 Z"
+        id="taste_1"/>
+  </g>
+  </svg-->
 </ion-content>

@@ -27,6 +27,7 @@ interface Dram {
   finish?: any;
   nose?: any;
   palate?: any;
+  vote?: number;
 }
 
 interface Action {
