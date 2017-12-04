@@ -23,24 +23,27 @@ export class WheelPage {
     console.log(i+' logged');
     let taste = SVG.get("segment_"+i);
     taste.fill(taste.attr('stroke')).opacity(0.8);
-    taste.scale(1.5);
+    //taste.scale(1.5);
     
     //taste.data("m 10,15 a 30,30 0 0 1 10, 15,751.02138 L 372.05521,526.04572 Z");
   }
 
   ionViewDidLoad() {
-    let startX = 0;
+    let startX = 0,
+        startY = 0;
+
     for (let i=0; i<8; i++){
       let segment = SVG.get('segment_'+i);
       segment.touchstart((event)=>{
         startX = event.touches[0].screenX;
+        startY = event.touches[0].screenY;
         //console.log(event);
       }).touchmove((event)=>{
         //console.log(event);
         //console.log(event.touches[0].screenX);
-        let ratio = event.touches[0].screenX/startX
-        segment.scale(ratio);
-        console.log(ratio);
+        let ratio = event.touches[0].screenX/startX;
+        segment.scale(ratio, ratio, 400, 300);
+        //console.log(ratio);
       });
     };
 
