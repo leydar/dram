@@ -1,4 +1,3 @@
-import { WheelPage } from './../pages/wheel/wheel';
 import { DramComponent } from './../components/dram/dram';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +5,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { FinishPage } from '../pages/finish/finish';
+import { WheelPage } from './../pages/wheel/wheel';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -30,7 +30,7 @@ var firebaseConfig = {
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
+    FinishPage,
     HomePage,
     TabsPage,
     DramComponent,
@@ -49,7 +49,7 @@ var firebaseConfig = {
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
+    FinishPage,
     HomePage,
     TabsPage,
     WheelPage

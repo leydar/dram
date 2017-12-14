@@ -4,47 +4,146 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <svg width="100%" height="100%" viewBox="0 0 800 600"
-    xmlns="http://www.w3.org/2000/svg" version="1.1" style="border: solid 1em green">
-    <!--rect x="1" y="1" width="1198" height="398"
-          fill="none" stroke="green" stroke-width="1" />
-    <path d="M50,100 h-150 a150,150 0 1,0 150,-150 z"
-          fill="red" stroke="blue" stroke-width="5" />
-    <path d="M275,175 v-150 a150,150 0 0,0 -150,150 z"
-          fill="yellow" stroke="blue" stroke-width="5" />
-    <path d="M500,200 v-100 a100,100 0 0,0 -100,100 z"></path>
-    <path d="M600,100 v250 a250,250 0 0,0 216.5,-125 z" fill="white" stroke="brown" stroke-width="10"></path>
-    <path d="M400,100 h250 a250,250 0 0,1 -250,250 z" fill="white" stroke="green" stroke-width="5"></path-->
+<ion-content>
+  <!--img src="/assets/imgs/citrus.jpg" alt="citrus"-->
+  <svg id="paperTaste" width="100%" height="99.25%" viewBox="0 0 800 600"
+    xmlns="http://www.w3.org/2000/svg" version="1.1" style="border: solid 1px yellow">
+    <defs>
+      <pattern id="citrus" width="1" height="1">
+        <image xlink:href="assets/imgs/citrus.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="winey" width="1" height="1">
+        <image xlink:href="assets/imgs/winey.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="floral" width="1" height="1">
+        <image xlink:href="assets/imgs/floral.jpg" x="0" y="-50" />
+      </pattern>
+      <pattern id="fruity" width="1" height="1">
+        <image xlink:href="assets/imgs/fruity.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="cereal" width="1" height="1">
+        <image xlink:href="assets/imgs/cereal.jpg" x="-100" y="-200" />
+      </pattern>
+      <pattern id="barley" width="1" height="1">
+          <image xlink:href="assets/imgs/barley.jpg" x="-100" y="-200" />
+      </pattern>
+      <pattern id="corn" width="1" height="1">
+          <image xlink:href="assets/imgs/corn.jpg" x="-100" y="-200" />
+      </pattern>
+      <pattern id="rye" width="1" height="1">
+          <image xlink:href="assets/imgs/rye.jpg" x="-100" y="-200" />
+      </pattern>  
+      <pattern id="wheat" width="1" height="1">
+          <image xlink:href="assets/imgs/wheat.jpg" x="-100" y="-200" />
+      </pattern>
+      <pattern id="malty" width="1" height="1">
+          <image xlink:href="assets/imgs/malty.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="roasted_flavours" width="1" height="1">
+          <image xlink:href="assets/imgs/roasted_flavours.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="nuts" width="1" height="1">
+          <image xlink:href="assets/imgs/nuts.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="spicy" width="1" height="1">
+        <image xlink:href="assets/imgs/spicy.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="vegetable" width="1" height="1">
+        <image xlink:href="assets/imgs/vegetable.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="woody" width="1" height="1">
+        <image xlink:href="assets/imgs/woody.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="wood" width="1" height="1">
+          <image xlink:href="assets/imgs/wood.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="husks" width="1" height="1">
+          <image xlink:href="assets/imgs/husks.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="stone_fruit" width="1" height="1">
+          <image xlink:href="assets/imgs/stone_fruit.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="pip_fruit" width="1" height="1">
+          <image xlink:href="assets/imgs/pip_fruit.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="exotic" width="1" height="1">
+          <image xlink:href="assets/imgs/exotic.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="green" width="1" height="1">
+          <image xlink:href="assets/imgs/green.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="earthy" width="1" height="1">
+          <image xlink:href="assets/imgs/earthy.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="roasted" width="1" height="1">
+        <image xlink:href="assets/imgs/roasted.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="oat" width="1" height="1">
+          <image xlink:href="assets/imgs/oat.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="off-notes" width="1" height="1">
+          <image xlink:href="assets/imgs/off-notes.jpg" x="0" y="0" />
+      </pattern>
+      <pattern id="dram" width="1" height="1">
+          <image xlink:href="assets/imgs/dram.jpg" x="0" y="0" />
+      </pattern>
+      <filter id="coffeefilter" width="1.5" height="1.5">
+        <feImage xlink:href="assets/imgs/coffee.jpg" result="pattern"/>
+        <feTile/>
+        <feComposite operator="in" in2="SourceGraphic"/>
+      </filter>
+    </defs>
+    <!--g id="note_0" opacity=0.6>
+      <path id="note_0.1" (click)="segmentClick('note_0');" 
+        d="M 400 300 L 650 300 A 250 250 0 0 1 576.776695296637 476.77669529663683 z" 
+        fill="url(#citrus)"></path>
+      <path id="note_0.2" (click)="segmentClick('note_0');" 
+        d="M 600 300 A 200 200 0 0 1 541.4213562373095 441.4213562373095" 
+        fill="none" stroke="black"></path>
+    </g-->
+    
+    <!--path id="note_0" (click)="segmentClick('note_0');" 
+      d="M 400 300 L 650 300 A 250 250 0 0 1 576.776695296637 476.77669529663683 z" 
+      fill="url(#citrus)"></path>
+    <path id="note_1" (click)="segmentClick('note_1');" d="M 400 300 L 576.776695296637 476.77669529663683 A 250 250 0 0 1 400 550 z" fill="url(#floral)" opacity=0.6 stroke="white"></path>
+    <path id="note_2" (click)="segmentClick('note_2');" d="M 400 300 L 400 550 A 250 250 0 0 1 223.22330470336314 476.7766952966369 z" fill="url(#chocolate)" opacity=0.6 stroke="white"></path>
+    <path id="note_3" (click)="segmentClick('note_3');" d="M 400 300 L 223.22330470336314 476.7766952966369 A 250 250 0 0 1 150 300.00000000000006 z" fill="url(#grain)" opacity=0.6 stroke="white"></path>
+    <path id="note_4" (click)="segmentClick('note_4');" d="M 400 300 L 150 300.00000000000006 A 250 250 0 0 1 223.22330470336308 123.22330470336314 z" fill="url(#grass)" opacity=0.6 stroke="white"></path>
+    <path id="note_5" (click)="segmentClick('note_5');" d="M 400 300 L 223.22330470336308 123.22330470336314 A 250 250 0 0 1 399.99999999999994 50 z" fill="url(#caramel)" opacity=0.6 stroke="white"></path>
+    <path id="note_6" (click)="segmentClick('note_6');" d="M 400 300 L 399.99999999999994 50 A 250 250 0 0 1 576.7766952966368 123.22330470336308 z" opacity=0.6 stroke="white"></path>
+    <path id="note_7" (click)="segmentClick('note_7');" d="M 400 300 L 576.7766952966368 123.22330470336308 A 250 250 0 0 1 650 299.99999999999994 z" fill="url(#wood)" opacity=0.6 stroke="white"></path>
+    
+    <use filter="url(#coffeefilter)" xlink:href="#note_6" />
+    <circle id="intesity_20" (click)="centreClick();"
+      cx="400" cy="300" r="20" stroke="#ffccaa"
+      fill="url(#dram)"
+      opacity=0.7 stroke-width="1">
+    </circle>
+    <circle id="intesity_60" (click)="centreClick();"
+      cx="400" cy="300" r="60" stroke="#ffb380"
+      fill="none"
+      opacity=0.7 stroke-width="1">
+    </circle>
+    <circle id="intesity_100" (click)="centreClick();"
+      cx="400" cy="300" r="100" stroke="#ff9955"
+      fill="none"
+      opacity=0.7 stroke-width="1">
+    </circle>
+    <circle id="intesity_140" (click)="centreClick();"
+      cx="400" cy="300" r="140" stroke="#ff7f2a"
+      fill="none"
+      opacity=0.7 stroke-width="1">
+    </circle>
+    <circle id="intesity_180" (click)="centreClick();"
+      cx="400" cy="300" r="180" stroke="#ff6600"
+      fill="none"
+      stroke-width="1">
+    </circle>
+    <circle id="intesity_220" (click)="centreClick();"
+      cx="400" cy="300" r="220" stroke="#d45500"
+      fill="none"
+      opacity=0.7 stroke-width="1">
+    </circle-->
 
-    <path id="segment_0" (click)="segmentClick(0);" d="M400,300 h250 a250,250 0 0,1 -58.5,160.7 z" opacity=0.65 fill="white" stroke="red" stroke-width="5"></path>
-    <path id="segment_1" (click)="segmentClick(1);" d="M400,300 v250 a250,250 0 0,0 160.7,-58.5 z" opacity=0.65 fill="white" stroke="blue" stroke-width="5"></path>
-    <path id="segment_2" (click)="segmentClick(2);" d="M400,300 v250 a250,250 0 0,1 -160.7,-58.5 z" opacity=0.65 fill="white" stroke="brown" stroke-width="5"></path>
-    <path id="segment_3" (click)="segmentClick(3);" d="M400,300 h-250 a250,250 0 0,0 58.5,160.7 z" opacity=0.65 fill="white" stroke="orange" stroke-width="5"></path>
-
-    <path id="segment_4" (click)="segmentClick(4);" d="M400,300 h250 a250,250 0 0,0 -58.5,-160.7 z" opacity=0.65 fill="white" stroke="black" stroke-width="5"></path>
-    <path id="segment_5" (click)="segmentClick(5);" d="M400,300 v-250 a250,250 0 0,1 160.7,58.5 z" opacity=0.65 fill="white" stroke="purple" stroke-width="5"></path>
-    <path id="segment_6" (click)="segmentClick(6);" d="M400,300 v-250 a250,250 0 0,0 -160.7,58.5 z" opacity=0.65 fill="white" stroke="yellow" stroke-width="5"></path>
-    <path id="segment_7" (click)="segmentClick(7);" d="M400,300 h-250 a250,250 0 0,1 58.5,-160.7 z" opacity=0.65 fill="white" stroke="silver" stroke-width="5"></path>
-
-    <!--path d="M600,350 l 50,-25 
-              a25,25 -30 0,1 50,-25 l 50,-25 
-              a25,50 -30 0,1 50,-25 l 50,-25 
-              a25,75 -30 0,1 50,-25 l 50,-25 
-              a25,100 -30 0,1 50,-25 l 50,-25"
-          fill="none" stroke="red" stroke-width="5"  /-->
   </svg>
-  <!--object id="svg" data="assets/imgs/wheel.svg" type="image/svg+xml" width="100%">
-    Your browser is incompantable
-  </object-->
-  <!--svg viewBox="0 0 712 700">
-  <g id="layer1">
-    <path (click)="segmentClick(0);"
-        d="M 727.73093,526.04572 A 355.67572,350 0 0 1 644.51862,751.02138 L 372.05521,526.04572 Z"
-        id="taste_0"/>
-    <path (click)="segmentClick(1);"
-        d="M 727.73093,526.04572 A 355.67572,350 0 0 1 644.51862,751.02138 L 372.05521,526.04572 Z"
-        id="taste_1"/>
-  </g>
-  </svg-->
 </ion-content>
