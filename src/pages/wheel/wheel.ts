@@ -18,9 +18,16 @@ export class WheelPage {
 
   segmentClick(event: Event):void {
     let _segment = SVG.get(event.srcElement.id);
-        _segment.fill("url(#"+event.srcElement.getAttribute('type')+")")
-                .opacity(0.2)
-                .animate(2000, '>', 0).attr({opacity: 1});
+        if (_segment.attr('selected')==='true'){
+          _segment.attr({ 'selected': false })
+                  .animate(800, '<>', 0).attr({opacity: 0}).after(()=>{ 
+                    _segment.fill("white").opacity(0.6); 
+                  });
+        } else {
+          _segment.attr({'selected': true}).opacity(0)
+                  .fill("url(#"+event.srcElement.getAttribute('type')+")")
+                  .animate(2000, '<>', 0).attr({opacity: 1});
+        };
 
     //console.log(event.srcElement.id, event.srcElement.getAttribute('type'));
     //event.srcElement.setAttribute("opacity", "1");
@@ -81,7 +88,7 @@ export class WheelPage {
   }
 
   drawNotes(): void{
-    this.paper = SVG("paperTaste");
+    this.paper = SVG("paper_taste");
     //this.paper.clear();
 
     this.drawNote(36, 72, Level.outer, "vegetable");
@@ -134,12 +141,12 @@ export class WheelPage {
       this.drawNote(330, 340, Level.inner, "exotic");
       this.drawNote(340, 360, Level.inner, "dried_fruit");
       
-    this.drawCentre();
+    this.drawOutline();
   }
 
-  drawCentre(): void {
+  drawOutline(): void {
     this.paper.circle(40).fill("#ff6600").opacity(0.6).move(380,280).click(this.centreClick); //(this.centreClick)(this)
-    
+    this.paper.circle(780).stroke("#ff6600").fill("none").opacity(0.6).move(10,-90);
     /*function() {
       this.fill({ color: '#f06' });
       this.centreClick('tried');
@@ -154,7 +161,7 @@ export class WheelPage {
     
         //console.log(type, this.fill, _fill); //0.8-(noteLevel/10)
         this.paper.path(_note.path).id(type+"_"+noteLevel).opacity(0.6).fill(_fill)
-                  .attr({'type': type}).stroke("#ff9955").click(this.segmentClick);
+                  .attr({'type': type, 'selected': false}).stroke("#ff9955").click(this.segmentClick);
 
         this.paper.text((add) => {
                     add.tspan(type.replace("_", " ")).dy(_note.text.verticalOffset)
@@ -163,11 +170,11 @@ export class WheelPage {
                   .textPath().attr('startOffset', _note.text.offset)
                   .click(this.segmentClick);
     
-        let _segment = SVG.get(_id).addClass("attempted-class-structure");
+        let _segment = SVG.get(_id);//.addClass("attempted-class-structure");
         if (noteLevel === Level.centre) {
-          _segment.animate(1500, '>', 300).rotate(360, 400, 300).attr({fill: "#c0c0c0"});
+          _segment.animate(1500, '<>', 300).rotate(360, 400, 300).attr({fill: "#ff9955"});
         } else {
-          _segment.animate(1500, '>', 300).rotate(-360, 400, 300);
+          _segment.animate(1500, '<>', 300).rotate(-360, 400, 300);
         };
         
         //segment.animate(2000, '>', 1000).attr({ fill: '#f03' });

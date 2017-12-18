@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as SVG from "svg.js";
-/**
- * Generated class for the FinishPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -19,20 +13,35 @@ export class FinishPage {
   }
 
   ionViewDidLoad() {
-    let paper = SVG('paperFinish');//.size(800, 600);
+    let paper = SVG('paper_finish');
+    var rect = paper.rect(50, 50);
+    
+    //rect.animate().rotate(45).move(50,50);
+    rect.touchmove((event)=>{
+      //let bBox = rect.bbox();
 
-    //let image = paper.svg('assets/imgs/fruity.jpg');
-    let SVGFile="assets/imgs/fruity.jpg";
-    let loadXML = new XMLHttpRequest;
+      let _svgX = event.touches[0].clientX,
+          _svgY = event.touches[0].clientY;
+      let _path = ["M 10,10 L",_svgX,_svgY].join(' ');
 
-    loadXML.onload = callback;
-    loadXML.open("GET", SVGFile, true);
-    loadXML.send();
+      paper.path(_path).stroke("#000").opacity(0.25);
+      rect.move( event.touches[0].pageX, event.touches[0].pageY );
+    });
 
-    function callback()
-    {
-        var svgFileString=loadXML.responseText;
-        paper.svg(svgFileString);
-    }
+    // let anchor: any = SVG.get('anchor_toffee'),
+    //     ratioX: number = 700/screen.width,
+    //     ratioY: number = 1100/screen.height;
+    //     // edges: any = SVG.get('finish');
+
+    // if (anchor) {
+    //   anchor.touchmove((event)=>{
+    //     let _svgX = event.touches[0].clientX,
+    //         _svgY = event.touches[0].clientY+80;
+    //     let _path: string = ["M 400,300 L",_svgX,_svgY].join(' ');
+    //     paper.path(_path).stroke("#000").opacity(0.25);
+    //     // anchor.move(event.touches[0].clientX, event.touches[0].clientY);
+    //     anchor.move(_svgX, _svgY);
+    //   });
+    // };
   }
 }

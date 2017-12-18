@@ -26,7 +26,7 @@ interface Dram {
   edition?: string;
   finish?: any;
   nose?: any;
-  palate?: any;
+  taste?: any;
   vote?: number;
 }
 
@@ -88,7 +88,7 @@ export class HomePage {
                                {blender: 'Billy Leighton'},
                                {cooper: 'Ger Buckley'}],
                      nose: ['grassy', 'oily'],
-                     palate: ['cream', 'apples', 'spice', 'leather'],
+                     taste: ['cream', 'apples', 'spice', 'leather'],
                      mouthfeel: ['oily', 'rich'],
                      finish: ['lingering', 'warm'],
                      notes: 'A remarkable dram. I wish I hadn\'t already finished the bottle'});
