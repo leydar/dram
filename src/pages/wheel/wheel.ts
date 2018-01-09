@@ -26,7 +26,7 @@ export class WheelPage {
         } else {
           _segment.attr({'selected': true}).opacity(0)
                   .fill("url(#"+event.srcElement.getAttribute('type')+")")
-                  .animate(2000, '<>', 0).attr({opacity: 1});
+                  .animate(1500, '<>', 0).attr({opacity: 1});
         };
 
     //console.log(event.srcElement.id, event.srcElement.getAttribute('type'));

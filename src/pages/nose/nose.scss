@@ -1,0 +1,16 @@
+page-nose {
+body {
+  margin: 0;
+  min-width: 960px;
+}
+    
+rect {
+  fill: green;
+  pointer-events: all;
+}
+    
+circle {
+  fill: none;
+  stroke-width: 2.5px;
+}
+}

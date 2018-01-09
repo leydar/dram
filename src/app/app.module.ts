@@ -9,6 +9,7 @@ import { FinishPage } from '../pages/finish/finish';
 import { WheelPage } from './../pages/wheel/wheel';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { NosePage } from '../pages/nose/nose';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,6 +31,7 @@ var firebaseConfig = {
   declarations: [
     MyApp,
     AboutPage,
+    NosePage,
     FinishPage,
     HomePage,
     TabsPage,
@@ -48,6 +50,7 @@ var firebaseConfig = {
   ],
   entryComponents: [
     MyApp,
+    NosePage,
     AboutPage,
     FinishPage,
     HomePage,
